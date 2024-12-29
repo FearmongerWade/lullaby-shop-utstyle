@@ -9,6 +9,6 @@ class Main extends Sprite
 	{
 		super();
 
-		addChild(new FlxGame(0, 0, states.PlayState, 60, 60, true, false));
+		addChild(new FlxGame(0, 0, states.ShopState, 60, 60, true, false));
 	}
 }

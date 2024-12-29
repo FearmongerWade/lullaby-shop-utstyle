@@ -19,6 +19,6 @@ class Paths
     public static function sound(name:String)
         return "assets/audio/sounds/"+name+'.ogg';
 
-    public static function font(name:String)
+    public static function font(?name:String = 'PixelOperator-Bold.ttf')
         return "assets/fonts/"+ name;
 }

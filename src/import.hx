@@ -12,6 +12,7 @@ import flixel.tweens.FlxTween;
 import flixel.group.FlxSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.sound.FlxSound;
+import flixel.math.FlxMath;
 
 // -- Backend -- //
 
