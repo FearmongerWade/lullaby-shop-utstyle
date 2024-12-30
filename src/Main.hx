@@ -11,6 +11,6 @@ class Main extends Sprite
 
 		Settings.load();
 
-		addChild(new FlxGame(0, 0, states.ShopState, 60, 60, true, false));
+		addChild(new FlxGame(0, 0, states.TitleState, 60, 60, false, false));
 	}
 }

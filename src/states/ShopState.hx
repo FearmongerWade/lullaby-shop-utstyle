@@ -19,8 +19,8 @@ class ShopState extends FlxState
     override function create()
     {
         // yeah
-        FlxG.mouse.visible = false;
 
+        FlxG.mouse.visible = false;
         FlxG.sound.playMusic(Paths.music('shopMenu'));
 
         // background assets
