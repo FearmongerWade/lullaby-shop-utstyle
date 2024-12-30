@@ -10,6 +10,7 @@ class Main extends Sprite
 		super();
 
 		Settings.load();
+		Controls.load();
 
 		addChild(new FlxGame(0, 0, states.TitleState, 60, 60, false, false));
 	}

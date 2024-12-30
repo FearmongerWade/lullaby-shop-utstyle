@@ -60,11 +60,11 @@ class TitleState extends FlxState
 
     override function update(elapsed:Float)
     {
-        if (FlxG.keys.justPressed.LEFT)
+        if (Controls.justPressed('menuLeft'))
             changeItem(-1);
-        if (FlxG.keys.justPressed.RIGHT)
+        if (Controls.justPressed('menuRight'))
             changeItem(1);
-        if (FlxG.keys.justPressed.Z)
+        if (Controls.justPressed('confirm'))
             selectItem();
 
         super.update(elapsed);

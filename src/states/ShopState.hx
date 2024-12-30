@@ -80,9 +80,9 @@ class ShopState extends FlxState
 
     override function update(elapsed:Float)
     {
-        if (FlxG.keys.anyJustPressed([W, UP]))
+        if (Controls.justPressed('menuUp'))
             changeItem(-1);
-        if (FlxG.keys.anyJustPressed([S, DOWN]))
+        if (Controls.justPressed('menuDown'))
             changeItem(1);
 
         super.update(elapsed);
