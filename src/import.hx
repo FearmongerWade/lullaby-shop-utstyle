@@ -16,6 +16,6 @@ import flixel.math.FlxMath;
 
 // -- Backend -- //
 
-import backend.Paths;
+import backend.*;
 
 using StringTools;
