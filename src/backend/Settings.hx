@@ -4,6 +4,8 @@ import flixel.util.FlxSave;
 
 @:structInit class SaveData
 {
+	public var gameTime:Int = 0;
+
     public var gold:Int = 400;
     public var curSpace:Int = 0;
     public var maxSpace:Int = 8;

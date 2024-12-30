@@ -1,5 +1,7 @@
 package states;
 
+import flixel.util.FlxStringUtil;
+
 class TitleState extends FlxState
 {
     var defaultSize:Int = 28;
@@ -32,10 +34,11 @@ class TitleState extends FlxState
         lv.screenCenter(X);
         add(lv);
 
-        var playtime = new FlxText(425, 128, 0, "10:27", defaultSize);
+        var playtime = new FlxText(425, 128, 0, '', defaultSize);
         playtime.font = Paths.font();
         playtime.alignment = RIGHT;
         add(playtime);
+        playtime.text = FlxStringUtil.formatTime(Settings.data.gameTime, false);
 
         var place = new FlxText(140, 168, 0, '???', defaultSize);
         place.font = Paths.font();

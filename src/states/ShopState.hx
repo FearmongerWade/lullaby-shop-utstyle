@@ -59,7 +59,7 @@ class ShopState extends FlxState
 
         for (i in 0...options.length)
         {
-            var item = new FlxText(480, 268 + (i*40), 0, options[i], 32);
+            var item = new FlxText(480, 268 + (i*35), 0, options[i], 32);
             item.font = Paths.font();
             item.ID = i;
             grpText.add(item);
