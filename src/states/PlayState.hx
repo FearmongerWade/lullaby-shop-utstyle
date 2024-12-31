@@ -39,7 +39,7 @@ class PlayState extends FlxState
         prefix.font = Paths.font('PixelOperator-Bold.ttf');
         add(prefix);
 
-        dialogue = new FlxTypeText(prefix.x + prefix.width + 20, prefix.y, Std.int(white.width * 0.7), 'Hello human', 30);
+        dialogue = new FlxTypeText(prefix.x + prefix.width + 20, prefix.y, Std.int(white.width * 0.7), 'Hello human.', 30);
         dialogue.font = Paths.font('PixelOperator-Bold.ttf');
         dialogue.sounds = [FlxG.sound.load(Paths.sound('textbox/cartridgeGuy'))];
         add(dialogue);
@@ -88,7 +88,7 @@ class PlayState extends FlxState
 		switch (curText)
 		{
 			case 0:
-				dialogue.resetText('Hello human');
+				dialogue.resetText('Hello human.');
 				dialogue.start(0.04, true);
 			case 1:
 				guy.animation.play('front');
