@@ -5,6 +5,26 @@ import flixel.addons.text.FlxTypeText;
 
 class ShopState extends FlxState
 {
+    /*
+    shit to add:
+    - silver cartridge      - 0G      - Free of charge. 
+    - game boy advance sp   - 300G    - Stupid thing does nothing but make annoying sounds.
+    - mysterious letter     - 666G    - The envelope has your name on it.
+    - broken vinyl          - 250G    - I don't want this, but it's funny to make you pay for it.
+
+    sell line:
+    - Why would I buy your shit back? I'm trying to get rid of it, you moron.
+
+    clicking talk:
+    - Your nose is weird.
+    - Don't worry. I've got an eternity. Can you say the same?
+    - Don't sympathize with evil.
+    - Speaking ill of another man's hat is dishonorable.
+    - I'll have you know I don't appreciate window shoppers.
+    
+    not enough money line:
+    - You're joking, right?
+    */
     var soul:FlxSprite; // selector
 
     var curSelected:Int = 0;
