@@ -93,7 +93,7 @@ class TitleState extends FlxState
         switch(options[curSelected])
         {
             case 'Continue': 
-                FlxG.switchState(new ShopState());
+                FlxG.switchState(new PlayState());
             case 'Settings':
                 trace('opened the settings menu');
             default: // crash prevention

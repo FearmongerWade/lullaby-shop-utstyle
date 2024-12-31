@@ -22,6 +22,7 @@ class ShopState extends FlxState
 
         FlxG.mouse.visible = false;
         FlxG.sound.playMusic(Paths.music('shopMenu'));
+        openSubState(new substates.TransIn());
 
         // background assets
 
