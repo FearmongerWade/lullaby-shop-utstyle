@@ -20,8 +20,8 @@ class EndState extends FlxState
         new FlxTimer().start(5, function(tmr:FlxTimer) {
             changeText('Art and Programming\n_feamonger\n\nLullaby Shop Theme\nSaster\n\nCartridge Guy\nBanbuds & ImKeeby', 100);
             new FlxTimer().start(5, function(tmr:FlxTimer){
-                changeText('Special Thanks\n\nsword_352\nIamMorwen\nRapperGF\nEyeDaleHim (soul assets)\nglintfish\n\n\nCreated from ground up with\nHaxeFlixel', 60, 30);
-                new FlxTimer().start(8, function(tmr:FlxTimer) {
+                changeText('Created from ground up with\nHaxeFlixel', 180);
+                new FlxTimer().start(5, function(tmr:FlxTimer) {
                     changeText('Thanks for watching', 220, 50);
                 });
             });
