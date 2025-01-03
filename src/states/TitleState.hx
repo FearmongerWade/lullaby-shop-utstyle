@@ -12,6 +12,7 @@ class TitleState extends FlxState
 
     override function create()
     {
+        FlxG.mouse.visible = false;
         FlxG.sound.playMusic(Paths.music('startMenu'));
 
         var bg = new FlxSprite().loadGraphic(Paths.image('start/bg'));
@@ -93,8 +94,10 @@ class TitleState extends FlxState
         switch(options[curSelected])
         {
             case 'Continue': 
-                FlxG.switchState(new PlayState());
+                //openSubState(new substates.EnterBattle());
+                FlxG.switchState(new FakeState());
             case 'Settings':
+                FlxG.switchState(new EndState());
                 trace('opened the settings menu');
             default: // crash prevention
                 FlxG.resetState();

@@ -205,7 +205,7 @@ class ShopState extends FlxState
         dialogue.completeCallback = function()
         {
             new FlxTimer().start(1, function(timer:FlxTimer) {
-                #if desktop Sys.exit(1); #end
+                FlxG.switchState(new EndState());
             });
         }
     }
