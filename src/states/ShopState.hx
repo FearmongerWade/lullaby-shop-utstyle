@@ -94,17 +94,35 @@ class ShopState extends FlxState
             item.ID = i;
             grpText.add(item);
         }
+        // this is used for the buy sub menu dont worry about it
+        grpItems = new FlxTypedGroup<FlxText>();
+        add(grpItems);
 
-        goldText = new FlxText(460, 428, 0, Settings.data.gold+'G', 30);
+        for (i => item in shopItems)
+        {
+            var newItem = new FlxText(50, 268+(i*35), 0, null, 28);
+            newItem.font = Paths.font();
+            newItem.ID = i;
+            newItem.alpha = 0.000001;
+            grpItems.add(newItem);
+            newItem.text = item[1] + 'G - ' + item[0];
+
+            if (i == 4)
+                newItem.text = 'Exit';
+        }
+
+        goldText = new FlxText(460, 428, 0, null, 30);
         goldText.font = Paths.font();
         add(goldText);
 
-        itemsText = new FlxText(560, 428, 0, Settings.data.curSpace+'/'+Settings.data.maxSpace, 30);
+        itemsText = new FlxText(560, 428, 0, null, 30);
         itemsText.font = Paths.font();
         add(itemsText);
 
         changeItem();
         updateText(randomDialogue[FlxG.random.int(0, randomDialogue.length - 1)]);
+        updateInventory();
+
         super.create();
     }
 
@@ -130,6 +148,13 @@ class ShopState extends FlxState
                 buyItem();
             if (Controls.justPressed('cancel'))
                 stoppedShopping();
+        }
+
+        if (FlxG.keys.justPressed.F)
+        {
+            FlxG.sound.play(Paths.sound('menuSelect'));
+            Settings.data.gold += 100;
+            updateInventory();
         }
 
         super.update(elapsed);
@@ -202,20 +227,9 @@ class ShopState extends FlxState
 
         FlxTween.tween(itemBox, {y: 80}, 0.5, {ease:FlxEase.quadInOut});
 
-        grpItems = new FlxTypedGroup<FlxText>();
-        add(grpItems);
-
-        for (i => item in shopItems)
-        {
-            var newItem = new FlxText(50, 268+(i*35), 0, null, 28);
-            newItem.font = Paths.font();
-            newItem.ID = i;
-            grpItems.add(newItem);
-            newItem.text = item[1] + 'G - ' + item[0];
-
-            if (i == 4)
-                newItem.text = 'Exit';
-        }
+        grpItems.forEach(function(txt:FlxText) {
+            txt.alpha = 1;
+        });
 
         otherDialogue = new FlxTypeText(450, 265, 150, "What are ya buyin'?", 28);
         otherDialogue.font = Paths.font();
@@ -224,13 +238,14 @@ class ShopState extends FlxState
         otherDialogue.start(0.04, true);
 
         changeItemShop();
+        updateInventory();
     }
 
     function stoppedShopping()
     {
         // kill him KILL HIM. KILL HIM NOWWW
         grpItems.forEach(function(txt:FlxText){
-            txt.kill();
+            txt.alpha = 0.00001;
         });
         otherDialogue.kill();
         FlxTween.tween(itemBox, {y: 250}, 0.5, {ease:FlxEase.quadInOut});
@@ -256,7 +271,7 @@ class ShopState extends FlxState
         grpItems.forEach(function(txt:FlxText)
         {
             if (txt.ID == curItem)
-                soul.setPosition(txt.x - 20, txt.y + 5);
+                soul.setPosition(txt.x - 20, txt.y + 10);
         });
 
         itemBox.updateItemText(shopItems[curItem][2]);
@@ -268,8 +283,37 @@ class ShopState extends FlxState
             stoppedShopping();
         else
         {
-            FlxG.sound.play(Paths.sound('buyItem'));
-            trace('You bought ' + shopItems[curItem][0]);
+            if (Settings.data.gold >= shopItems[curItem][1])
+            {
+                FlxG.sound.play(Paths.sound('buyItem'));
+                trace('You bought ' + shopItems[curItem][0]);
+                Settings.data.gold -= shopItems[curItem][1];
+    
+                if (Settings.data.curSpace == Settings.data.maxSpace)
+                    updateTextShop("Running out of space?");
+                else
+                    Settings.data.curSpace += 1;
+
+                Settings.save();
+            }
+            else
+            {
+                FlxG.sound.play(Paths.sound('moveMenu'));
+                updateTextShop('You cannot be serious.');
+            }
+            updateInventory();
         }
+    }
+
+    function updateInventory()
+    {
+        goldText.text = Settings.data.gold + 'G';
+        itemsText.text = Settings.data.curSpace + '/' + Settings.data.maxSpace;
+    }
+
+    function updateTextShop(text:String = '')
+    {
+        otherDialogue.resetText(text);
+        otherDialogue.start(0.04, true);
     }
 }

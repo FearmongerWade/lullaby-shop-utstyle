@@ -45,7 +45,7 @@ class Controls
 		if (coolSave == null) 
         {
 			coolSave = new FlxSave();
-			coolSave.bind('controls', 'FearmongerWade');
+			coolSave.bind('controls', Utils.getSavePath());
 		}
 
 		if (coolSave.data.keyboard != null) 

@@ -6,7 +6,7 @@ import flixel.util.FlxSave;
 {
 	public var gameTime:Int = 0;
 
-    public var gold:Int = 400;
+    public var gold:Float = 400;
     public var curSpace:Int = 0;
     public var maxSpace:Int = 8;
 }
@@ -26,7 +26,7 @@ class Settings
 
 	public static function load()
 	{
-		FlxG.save.bind('settings', 'FearmongerWade');
+		FlxG.save.bind('settings', Utils.getSavePath());
 
 		for (key in Reflect.fields(data))
 			if (Reflect.hasField(FlxG.save.data, key))
