@@ -3,7 +3,7 @@
 
 	<!-- Application Settings -->
 
-	<app title="Lullaby" file="Lullaby" main="Main" version="0.0.1" company="FearmongerWade" />
+	<app title="UNDERTALE" file="UNDERTALE" main="Main" version="0.0.1" company="FearmongerWade" />
 
 	<!--  Window Settings  -->
 
@@ -49,5 +49,6 @@
 	<!--<haxedef name="FLX_NO_SOUND_SYSTEM" />-->
 	
 	<!-- Custom  -->
+	<icon path = "appIcon.png"/>
 
 </project>
